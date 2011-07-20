@@ -8,7 +8,6 @@ module APN
   end
 end
 
-
 class APN::App < APN::Base
   has_many :devices, :class_name => 'APN::Device', :dependent => :destroy
   has_many :notifications, :through => :devices, :dependent => :destroy
