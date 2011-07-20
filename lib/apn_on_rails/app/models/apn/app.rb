@@ -12,6 +12,7 @@ class APN::App < APN::Base
   has_many :devices, :class_name => 'APN::Device', :dependent => :destroy
   has_many :notifications, :through => :devices, :dependent => :destroy
   has_many :unsent_notifications, :through => :devices
+  validates_uniqueness_of :user_agent_string
     
   def cert
     (RAILS_ENV == 'production' ? apn_prod_cert : apn_dev_cert)
@@ -107,8 +108,6 @@ class APN::App < APN::Base
     end 
   end
   
-  
-  protected
   def log_connection_exception(ex)
     puts ex.message
   end
