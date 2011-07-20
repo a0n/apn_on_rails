@@ -1,4 +1,13 @@
-require 'base'
+module APN
+  class Base < ActiveRecord::Base # :nodoc:
+
+    def self.table_name # :nodoc:
+      self.to_s.gsub("::", "_").tableize
+    end
+
+  end
+end
+
 
 class APN::App < APN::Base
   has_many :devices, :class_name => 'APN::Device', :dependent => :destroy
