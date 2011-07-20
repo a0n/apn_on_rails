@@ -49,7 +49,7 @@ module APN
                    :port => configatron.apn.port}.merge(options)
         #cert = File.read(options[:cert])
         
-        cert = File.read(File.join(rails_root, 'config', options[:cert])))
+        cert = File.read(File.join(rails_root, 'config', options[:cert]))
         puts "this is the cert"
         puts cert.inspect
         
