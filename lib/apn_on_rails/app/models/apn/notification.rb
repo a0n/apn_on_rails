@@ -98,19 +98,25 @@ class APN::Notification < APN::Base
     # 
     # This can be run from the following Rake task:
     #   $ rake apn:notifications:deliver
-    def send_notifications(notifications = APN::Notification.all(:conditions => {:sent_at => nil}))
-      unless notifications.nil? || notifications.empty?
+#    def send_notifications(notifications = APN::Notification.all(:conditions => {:sent_at => nil}))
+#      unless notifications.nil? || notifications.empty?
+#
+#        APN::Connection.open_for_delivery do |conn, sock|
+#          notifications.each do |noty|
+#            conn.write(noty.message_for_sending)
+#            noty.sent_at = Time.now
+#            noty.save
+#          end
+#        end
+#
+#      end
+#    end
 
-        APN::Connection.open_for_delivery do |conn, sock|
-          notifications.each do |noty|
-            conn.write(noty.message_for_sending)
-            noty.sent_at = Time.now
-            noty.save
-          end
-        end
-
-      end
+    def self.send_notifications
+      ActiveSupport::Deprecation.warn("The method APN::Notification.send_notifications is deprecated.  Use APN::App.send_notifications instead.")
+      APN::App.send_notifications
     end
+
 
   end # class << self
 
