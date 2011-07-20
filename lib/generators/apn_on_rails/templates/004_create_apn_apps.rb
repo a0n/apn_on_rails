@@ -1,4 +1,4 @@
-class CreateApnApp < ActiveRecord::Migration # :nodoc:
+class CreateApnApps < ActiveRecord::Migration # :nodoc:
   def self.up
     create_table :apn_apps do |t|
       t.text :apn_dev_cert
