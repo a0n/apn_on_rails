@@ -24,6 +24,7 @@ class ApnMigrationsGenerator < Rails::Generators::Base
     migration_template '001_create_apn_devices.rb', 'db/migrate/create_apn_devices.rb'
     migration_template '002_create_apn_notifications.rb', 'db/migrate/create_apn_notifications.rb'
     migration_template '003_alter_apn_devices.rb', 'db/migrate/alter_apn_devices.rb'
+    migration_template '004_create_apn_apps.rb', 'db/migrate/create_apn_apps.rb'
   end
   
 end
