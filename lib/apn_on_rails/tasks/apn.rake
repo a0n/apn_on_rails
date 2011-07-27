@@ -16,7 +16,6 @@ namespace :apn do
     desc "Deliver all unsent APN notifications."
     task :deliver_constantly => [:environment] do
       while true do
-
         puts "sending"
         app.send_notifications
         sleep 2
