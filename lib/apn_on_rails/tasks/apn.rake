@@ -4,7 +4,24 @@ namespace :apn do
     
     desc "Deliver all unsent APN notifications."
     task :deliver => [:environment] do
-      APN::Notification.send_notifications
+      for app in APN::App.all
+        app.send_notifications
+      end
+    end
+    
+  end # notifications
+  
+  namespace :notifications do
+    
+    desc "Deliver all unsent APN notifications."
+    task :deliver_constantly => [:environment] do
+      while true do
+        for app in APN::App.all
+          app.send_notifications
+        end
+          sleep 3
+      end
+      
     end
     
   end # notifications
