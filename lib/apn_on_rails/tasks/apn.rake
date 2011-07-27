@@ -17,9 +17,15 @@ namespace :apn do
     task :deliver_constantly => [:environment] do
       while true do
         for app in APN::App.all
-          app.send_notifications
+          length = app.unsent_notifications.length
+          if length == 0
+            puts "nothing to send"
+          else
+            puts "sending #{length} notifications via #{app.name}"
+            app.send_notifications
+          end
         end
-          sleep 3
+          sleep 1
       end
       
     end
