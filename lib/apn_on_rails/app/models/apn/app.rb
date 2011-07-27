@@ -49,14 +49,13 @@ class APN::App < APN::Base
   end
   
   def self.send_notifications_for_cert(the_cert, app_id)
-    # unless self.unsent_notifications.nil? || self.unsent_notifications.empty?
+     unless self.unsent_notifications.nil? || self.unsent_notifications.empty?
       if (app_id == nil)
         conditions = "app_id is null"
       else 
         conditions = ["app_id = ?", app_id]
       end
       begin
-        puts the_cert
         APN::Connection.open_for_delivery({:cert => the_cert}) do |conn, sock|
           APN::Device.find_each(:conditions => conditions) do |dev|
             dev.unsent_notifications.each do |noty|
@@ -71,7 +70,7 @@ class APN::App < APN::Base
         puts e.message
        # log_connection_exception(e)
       end
-    # end   
+    end   
   end
   
   # Retrieves a list of APN::Device instnces from Apple using
