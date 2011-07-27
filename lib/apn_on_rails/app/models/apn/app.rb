@@ -49,7 +49,7 @@ class APN::App < APN::Base
   end
   
   def self.send_notifications_for_cert(the_cert, app_id)
-    unless self.unsent_notifications.nil? || self.unsent_notifications.empty?
+    unless self.unsent_notifications.empty?
       if (app_id == nil)
         conditions = "app_id is null"
       else 
