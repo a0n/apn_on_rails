@@ -66,9 +66,7 @@ class APN::App < APN::Base
           end
         end
       rescue Exception => e
-        puts e.inspect
-        puts e.message
-       # log_connection_exception(e)
+        log_connection_exception(e)
       end
     #end   
   end

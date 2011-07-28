@@ -50,9 +50,6 @@ module APN
         #cert = File.read(options[:cert])
         
         cert = File.read(File.join(Rails.root, 'config', options[:cert]))
-        puts "this is the cert"
-        puts cert.inspect
-        
         ctx = OpenSSL::SSL::SSLContext.new
         ctx.key = OpenSSL::PKey::RSA.new(cert, options[:passphrase])
         ctx.cert = OpenSSL::X509::Certificate.new(cert)
