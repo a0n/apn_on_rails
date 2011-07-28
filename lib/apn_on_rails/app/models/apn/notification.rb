@@ -54,6 +54,7 @@ class APN::Notification < APN::Base
     begin
       alert = JSON.parse(self.alert) if self.alert
     rescue Exception => e
+      puts "could not parse json alert - using value as string"
       alert = self.alert
     end
     
