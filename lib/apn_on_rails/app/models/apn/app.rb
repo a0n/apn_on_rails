@@ -18,10 +18,6 @@ class APN::App < APN::Base
     (RAILS_ENV == 'production' ? apn_prod_cert : apn_dev_cert)
   end
   
-  def log_connection_exception(ex)
-    puts ex.message
-  end
-  
   # Opens a connection to the Apple APN server and attempts to batch deliver
   # an Array of group notifications.
   # 
@@ -67,7 +63,7 @@ class APN::App < APN::Base
           end
         end
       rescue Exception => e
-        log_connection_exception(e)
+        puts e.message
       end
     #end   
   end
