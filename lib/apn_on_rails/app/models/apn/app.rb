@@ -16,7 +16,6 @@ class APN::App < APN::Base
     
   def cert
     env = RAILS_ENV == 'production' ? 'production' =  'development'
-    user_agent_string.downcase + "_" + env + ".pem"
     return "#{user_agent_string.downcase}_#{env}.pem"
   end
   

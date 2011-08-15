@@ -49,7 +49,7 @@ module APN
                    :port => configatron.apn.port}.merge(options)
         #cert = File.read(options[:cert])
         
-        cert = File.read(File.join(Rails.root, 'config', options[:cert]))
+        cert = File.read(File.join(Rails.root, 'config', 'apple_push_certs', options[:cert]))
         ctx = OpenSSL::SSL::SSLContext.new
         ctx.key = OpenSSL::PKey::RSA.new(cert, options[:passphrase])
         ctx.cert = OpenSSL::X509::Certificate.new(cert)
