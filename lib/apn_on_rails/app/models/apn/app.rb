@@ -15,7 +15,9 @@ class APN::App < APN::Base
   validates_uniqueness_of :user_agent_string
     
   def cert
-    (RAILS_ENV == 'production' ? apn_prod_cert : apn_dev_cert)
+    env = RAILS_ENV == 'production' ? 'production' =  'development'
+    user_agent_string.downcase + "_" + env + ".pem"
+    return "#{user_agent_string.downcase}_#{env}.pem"
   end
   
   # Opens a connection to the Apple APN server and attempts to batch deliver
