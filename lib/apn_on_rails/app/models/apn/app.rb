@@ -15,7 +15,7 @@ class APN::App < APN::Base
   validates_uniqueness_of :user_agent_string
     
   def cert
-    env = RAILS_ENV == 'production' ? 'production' =  'development'
+    env = RAILS_ENV == 'production' ? 'production' : 'development'
     return "#{user_agent_string.downcase}_#{env}.pem"
   end
   
