@@ -15,7 +15,7 @@ class APN::App < APN::Base
   validates_uniqueness_of :user_agent_string
     
   def cert
-    if RAILS_ENV == "production" || RAILS_ENV == "staging"
+    if (RAILS_ENV == "production" || RAILS_ENV == "staging")
       env = "production"
     else
       env = "development"
