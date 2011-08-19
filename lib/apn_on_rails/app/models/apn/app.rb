@@ -20,6 +20,8 @@ class APN::App < APN::Base
     else
       env = "development"
     end
+    puts "using certs"
+    puts "#{user_agent_string.downcase}_#{env}.pem"
     return "#{user_agent_string.downcase}_#{env}.pem"
   end
   
