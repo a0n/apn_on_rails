@@ -59,6 +59,9 @@ module APN
         ssl.sync = true
         ssl.connect
   
+        puts configatron.apn.host
+        puts options[:cert]
+  
         yield ssl, sock if block_given?
   
         ssl.close
